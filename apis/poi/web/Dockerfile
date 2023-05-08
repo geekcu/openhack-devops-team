@@ -8,8 +8,8 @@ RUN dotnet restore
 # copy everything else and build
 COPY ./apis/poi/web/ ./
 RUN dotnet publish -c Release -o out
-COPY ./appsettings.*.json /app/out/
-COPY ./appsettings.json /app/out/
+COPY ./apis/poi/web/appsettings.*.json /app/out/
+COPY ./apis/poi/web/appsettings.json /app/out/
 
 # build runtime image
 FROM mcr.microsoft.com/dotnet/core/aspnet:3.1
