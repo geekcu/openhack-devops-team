@@ -2,7 +2,7 @@ FROM mcr.microsoft.com/dotnet/core/sdk:3.1 AS build-env
 WORKDIR /app
 
 # copy csproj and restore as distinct layers
-COPY ./Startup.cs ./
+COPY poi.csproj /app/
 RUN dotnet restore
 
 # copy everything else and build
