@@ -2,14 +2,14 @@ FROM mcr.microsoft.com/dotnet/core/sdk:3.1 AS build-env
 WORKDIR /app
 
 # copy csproj and restore as distinct layers
-COPY ./apis/poi/web/*.csproj ./
+COPY *.csproj ./
 RUN dotnet restore
 
 # copy everything else and build
-COPY ./apis/poi/web/ ./
+COPY . ./
 RUN dotnet publish -c Release -o out
-COPY ./apis/poi/web/appsettings.*.json /app/out/
-COPY ./apis/poi/web/appsettings.json /app/out/
+COPY ./appsettings.*.json /app/out/
+COPY ./appsettings.json /app/out/
 
 # build runtime image
 FROM mcr.microsoft.com/dotnet/core/aspnet:3.1
